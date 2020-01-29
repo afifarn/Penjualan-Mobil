@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="17344583-a861-420d-8af6-2f22483547db">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="notrans" class="java.lang.String"/>
+	<parameter name="harusdibayar" class="java.lang.String"/>
+	<parameter name="dibayar" class="java.lang.String"/>
+	<parameter name="kembalian" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     pembeli.`Nama_Pembeli` AS pembeli_Nama_Pembeli,
+     bayar_cicilan.`kode_cicilan` AS bayar_cicilan_kode_cicilan,
+     bayar_cicilan.`jumlah_cicilan` AS bayar_cicilan_jumlah_cicilan,
+     bayar_cicilan.`cicilan_ke` AS bayar_cicilan_cicilan_ke,
+     bayar_cicilan.`cicilan_sisa_ke` AS bayar_cicilan_cicilan_sisa_ke,
+     bayar_cicilan.`cicilan_sisa_harga` AS bayar_cicilan_cicilan_sisa_harga
+FROM
+     `pembeli` pembeli INNER JOIN `kredit` kredit ON pembeli.`KTP` = kredit.`KTP`
+     INNER JOIN `bayar_cicilan` bayar_cicilan ON kredit.`Kode_Kredit` = bayar_cicilan.`kode_kredit`
+WHERE
+    bayar_cicilan.kode_cicilan = $P{notrans}]]>
+	</queryString>
+	<field name="pembeli_Nama_Pembeli" class="java.lang.String"/>
+	<field name="bayar_cicilan_kode_cicilan" class="java.lang.String"/>
+	<field name="bayar_cicilan_jumlah_cicilan" class="java.lang.Integer"/>
+	<field name="bayar_cicilan_cicilan_ke" class="java.lang.Integer"/>
+	<field name="bayar_cicilan_cicilan_sisa_ke" class="java.lang.Integer"/>
+	<field name="bayar_cicilan_cicilan_sisa_harga" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="57" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="a47a0431-ed55-473d-8768-b09796235c59" x="400" y="33" width="155" height="17"/>
+				<textElement/>
+				<text><![CDATA[Tanda Pembayaran Cicilan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="0114acb3-0a8e-4777-a860-44815d946138" x="41" y="0" width="174" height="33"/>
+				<textElement>
+					<font size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PT Torga Mobil]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="7eba874e-b8c6-4dc0-886e-7857b4ef5d05" x="82" y="33" width="192" height="20"/>
+				<textElement/>
+				<text><![CDATA[Jl Soekarno-Hatta No 617/619 Bandung]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="1" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="267" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="ea45bc79-ba4a-4549-b727-4f50c060f4d9" x="41" y="12" width="64" height="20"/>
+				<textElement/>
+				<text><![CDATA[No Transaksi]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="0428c968-9bc8-412b-ae8c-ad2e1797a320" x="105" y="12" width="77" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{notrans}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="d4d0b2d4-d525-4eb9-b745-0fc422936b73" x="41" y="43" width="36" height="20"/>
+				<textElement/>
+				<text><![CDATA[Nama :]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="96c3bb7c-d965-497b-a678-61df216c7cbd" x="120" y="43" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{pembeli_Nama_Pembeli}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="8b419c5f-e489-406c-9d81-1018cae0beed" x="41" y="86" width="64" height="20"/>
+				<textElement/>
+				<text><![CDATA[Cicikan Ke:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="4ab276cf-238c-425e-b8c6-a76d0f24b093" x="120" y="86" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{bayar_cicilan_cicilan_ke}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="88da99e1-5bf0-46f7-8a67-867adbacd17e" x="41" y="106" width="64" height="20"/>
+				<textElement/>
+				<text><![CDATA[Cicilan/Bulan:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="e94ac1e2-bcb8-455b-bcb4-36d91e44f5f2" x="120" y="106" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{harusdibayar}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="8bc5e06e-ed90-45a1-a8fb-c4ac0705b783" x="41" y="66" width="79" height="20"/>
+				<textElement/>
+				<text><![CDATA[Jumlah Cicilan]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="eb333699-1e70-4796-a3c9-f1949bad2e4c" x="120" y="66" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{bayar_cicilan_jumlah_cicilan}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="91010ad8-e69b-454b-9853-9cd54b061647" x="41" y="106" width="179" height="1"/>
+			</line>
+			<staticText>
+				<reportElement uuid="1427925e-7e7c-43ca-ba46-afa874970938" x="41" y="126" width="64" height="20"/>
+				<textElement/>
+				<text><![CDATA[Dibayar:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="cb21bad2-69a2-4dcf-a999-df2af8cb820f" x="120" y="126" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{dibayar}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="6c70e7db-5a74-401f-a7e5-f2685a829a21" x="41" y="146" width="179" height="1"/>
+			</line>
+			<staticText>
+				<reportElement uuid="dd337df5-b3ea-408a-a31c-48e0cd261272" x="41" y="147" width="64" height="20"/>
+				<textElement/>
+				<text><![CDATA[Kembalian:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="784f03fd-7899-4af1-b033-8b7e1f243404" x="120" y="147" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{kembalian}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="f3e977a5-92dc-4956-9e77-731f245dc832" x="300" y="46" width="63" height="20"/>
+				<textElement/>
+				<text><![CDATA[Sisa Hutang]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="ad9696de-bf1d-4d28-bbd0-93bf40d45820" x="363" y="46" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{bayar_cicilan_cicilan_sisa_harga}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="8aa0e3ed-7375-4a33-a946-03d186f20b30" x="400" y="167" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[Pembayar,]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="9b2ed4d1-42db-4ccd-b1e4-9e1bca3240ac" x="400" y="236" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{pembeli_Nama_Pembeli}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="dba35530-c709-4c81-83b8-89c367fecaa3" x="237" y="167" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[Kasir]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="e79c1ce0-3832-470a-8a71-d61a91f6253c" x="237" y="255" width="100" height="1"/>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

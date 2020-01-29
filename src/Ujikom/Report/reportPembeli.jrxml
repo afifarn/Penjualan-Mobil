@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="baec2909-c3a9-462f-95c5-fc39039c22fd">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     pembeli.`KTP` AS pembeli_KTP,
+     pembeli.`Nama_Pembeli` AS pembeli_Nama_Pembeli,
+     pembeli.`Alamat_Pembeli` AS pembeli_Alamat_Pembeli,
+     pembeli.`Telp_Pembeli` AS pembeli_Telp_Pembeli
+FROM
+     `pembeli` pembeli]]>
+	</queryString>
+	<field name="pembeli_KTP" class="java.lang.String"/>
+	<field name="pembeli_Nama_Pembeli" class="java.lang.String"/>
+	<field name="pembeli_Alamat_Pembeli" class="java.lang.String"/>
+	<field name="pembeli_Telp_Pembeli" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="70" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="4d350a9a-631f-494b-8d82-775fdc48f262" style="Title" x="0" y="5" width="263" height="33" forecolor="#000000"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[PT Torga Mobil]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="03fac00e-6544-422d-a81d-9c72d1adea03" style="SubTitle" x="63" y="39" width="351" height="22" forecolor="#000000"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Jl Soekarno-Hatta No 617/619 Bandung]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="36" splitType="Stretch">
+			<line>
+				<reportElement uuid="e392a723-8500-4f1b-8d51-671b2c5ebcb4" positionType="FixRelativeToBottom" x="0" y="35" width="555" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement uuid="4483c190-43ad-45f3-923b-03a03857ae41" style="Column header" x="0" y="19" width="138" height="15"/>
+				<textElement/>
+				<text><![CDATA[No KTP]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f76bdecb-8f0c-4424-811f-4efe742e669f" style="Column header" x="138" y="19" width="138" height="15"/>
+				<textElement/>
+				<text><![CDATA[Nama Lengkap]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4426d735-c78d-47ce-b36e-c35801d33a36" style="Column header" x="276" y="19" width="138" height="15"/>
+				<textElement/>
+				<text><![CDATA[Alamat]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="1e549979-3ac5-426b-8784-235f5c462b0f" style="Column header" x="414" y="19" width="138" height="15"/>
+				<textElement/>
+				<text><![CDATA[No Telepon]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement uuid="2be843b7-75f2-425f-b1d6-bf095be90880" positionType="FixRelativeToBottom" x="0" y="15" width="555" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement uuid="4dc322b2-f29e-4426-9bbc-663942e6ff25" style="Detail" x="0" y="0" width="138" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{pembeli_KTP}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="bcbcec6b-1dbe-4669-b667-bc670d194a6a" style="Detail" x="138" y="1" width="138" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{pembeli_Nama_Pembeli}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="830c1689-bbf2-4a5d-9d28-ee243fed7d48" style="Detail" x="276" y="0" width="138" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{pembeli_Alamat_Pembeli}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="16b131c0-0b5b-46eb-a0b6-b2f9bb63dc60" style="Detail" x="414" y="0" width="138" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{pembeli_Telp_Pembeli}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<line>
+				<reportElement uuid="ee1778bd-19be-442e-91f5-cef2e2c8903e" positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement uuid="3511bd1b-f9f9-4740-a988-96ea83f5238c" style="Column header" x="433" y="0" width="80" height="20"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement uuid="82c8f756-810d-4ae0-8eda-9b2929265ca8" style="Column header" x="513" y="0" width="40" height="20"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement uuid="f47cf015-5071-4223-8b56-e13dccfd0fa5" style="Column header" x="0" y="0" width="197" height="20"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

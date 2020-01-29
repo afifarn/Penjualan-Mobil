@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b4f9de0f-b845-4024-87c0-1d1f291c5fbb">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<parameter name="KodeFaktur" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     kredit.`Kode_Kredit` AS kredit_Kode_Kredit,
+     kredit.`tgl_kredit` AS kredit_tgl_kredit,
+     mobil.`Kode_Mobil` AS mobil_Kode_Mobil,
+     mobil.`Merk` AS mobil_Merk,
+     mobil.`Type` AS mobil_Type,
+     mobil.`Warna` AS mobil_Warna,
+     mobil.`Harga_Mobil` AS mobil_Harga_Mobil,
+     pembeli.`KTP` AS pembeli_KTP,
+     pembeli.`Nama_Pembeli` AS pembeli_Nama_Pembeli,
+     pembeli.`Alamat_Pembeli` AS pembeli_Alamat_Pembeli
+FROM
+     `mobil` mobil INNER JOIN `kredit` kredit ON mobil.`Kode_Mobil` = kredit.`kode_mobil`
+     INNER JOIN `pembeli` pembeli ON kredit.`KTP` = pembeli.`KTP`
+WHERE
+    kredit.kode_kredit = $P{KodeFaktur}]]>
+	</queryString>
+	<field name="kredit_Kode_Kredit" class="java.lang.String"/>
+	<field name="kredit_tgl_kredit" class="java.sql.Date"/>
+	<field name="mobil_Kode_Mobil" class="java.lang.String"/>
+	<field name="mobil_Merk" class="java.lang.String"/>
+	<field name="mobil_Type" class="java.lang.String"/>
+	<field name="mobil_Warna" class="java.lang.String"/>
+	<field name="mobil_Harga_Mobil" class="java.lang.Integer"/>
+	<field name="pembeli_KTP" class="java.lang.String"/>
+	<field name="pembeli_Nama_Pembeli" class="java.lang.String"/>
+	<field name="pembeli_Alamat_Pembeli" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="76" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="aef133ab-07a3-451f-ad83-7ba464156c16" style="Title" x="0" y="13" width="263" height="33"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[PT Torga Mobil]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d2743cfa-0581-421b-a98d-2f3ddd10ddf6" style="SubTitle" x="7" y="46" width="268" height="22"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Jl Soekarno-Hatta No 617/619 Bandung]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="8dd2cf70-4993-44b0-8e9e-836fdff5a701" x="400" y="56" width="155" height="20"/>
+				<textElement>
+					<font size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Faktur Kendaraan]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="1" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="266" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="681b72a8-35b6-40ab-b63e-6759e49885de" x="10" y="103" width="68" height="16"/>
+				<textElement/>
+				<text><![CDATA[Merk Mobil]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4a4ac278-be1c-4128-8e9c-37dd776eba27" x="10" y="10" width="68" height="14"/>
+				<textElement/>
+				<text><![CDATA[Nomor Faktur]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f0d9f7ed-c234-4a48-869e-7000288ecbbc" x="10" y="135" width="68" height="13"/>
+				<textElement/>
+				<text><![CDATA[Warna Mobil]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="a8e83656-651e-4e2f-a133-9ef65a010ed0" x="10" y="247" width="100" height="1"/>
+			</line>
+			<staticText>
+				<reportElement uuid="97b6f2a6-f37e-45d3-bb74-e76d7e2824e6" x="10" y="88" width="100" height="15"/>
+				<textElement/>
+				<text><![CDATA[Kode Mobil]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="0ac8563e-e9db-49ff-a9e0-09d51c7e60f3" x="348" y="184" width="60" height="14"/>
+				<textElement/>
+				<text><![CDATA[Penerima,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f27578df-92cd-4461-a518-7c80ede65574" x="10" y="119" width="68" height="16"/>
+				<textElement/>
+				<text><![CDATA[Type Mobil]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9b821074-f6d6-4ebe-9ea7-c5e8f9bf102c" x="10" y="184" width="100" height="14"/>
+				<textElement/>
+				<text><![CDATA[Penjual]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="7861fa8e-b2ec-460a-bc02-ef6b0bba591f" x="10" y="58" width="68" height="13"/>
+				<textElement/>
+				<text><![CDATA[Alamat]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b24bb58c-eee1-47f5-8ecf-96cc314f9446" x="10" y="148" width="68" height="13"/>
+				<textElement/>
+				<text><![CDATA[Harga Mobil]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="585e3467-0954-441b-bb3b-202b9372c89e" x="10" y="45" width="68" height="13"/>
+				<textElement/>
+				<text><![CDATA[Nama :]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="d51d59ba-9646-4f5a-81ca-4c348122e415" x="78" y="10" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{KodeFaktur}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="31626d1a-a3dd-4f08-9989-1469507081e5" x="78" y="88" width="100" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{mobil_Kode_Mobil}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="0784b281-b356-41f9-9fe5-f62b8b65936d" x="78" y="103" width="100" height="16"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{mobil_Merk}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="f89de785-11a7-44cb-915f-c77e3fe3bc62" x="78" y="119" width="100" height="16"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{mobil_Type}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="1f223022-0e28-4eae-870d-95ba632211c9" x="78" y="135" width="100" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{mobil_Warna}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="00c19c1e-c387-4d22-824b-0df46f97013c" x="78" y="148" width="100" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{mobil_Harga_Mobil}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="87443634-6bba-4ddd-b86a-331f08623a51" x="48" y="45" width="100" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{pembeli_Nama_Pembeli}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="33db414b-6ca2-4dee-9000-391125bdd8d7" x="48" y="58" width="100" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{pembeli_Alamat_Pembeli}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="062d5fa3-2732-4244-967e-532569e97bf0" x="333" y="228" width="100" height="19"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{pembeli_Nama_Pembeli}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

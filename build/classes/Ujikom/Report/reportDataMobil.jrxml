@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a8dca542-4fa1-4afb-b021-8df6643e39a9">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#E6DAC3"/>
+		</conditionalStyle>
+	</style>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     mobil.`Kode_Mobil` AS mobil_Kode_Mobil,
+     mobil.`Merk` AS mobil_Merk,
+     mobil.`Type` AS mobil_Type,
+     mobil.`Warna` AS mobil_Warna,
+     mobil.`Harga_Mobil` AS mobil_Harga_Mobil,
+     mobil.`Gambar` AS mobil_Gambar
+FROM
+     `mobil` mobil]]>
+	</queryString>
+	<field name="mobil_Kode_Mobil" class="java.lang.String"/>
+	<field name="mobil_Merk" class="java.lang.String"/>
+	<field name="mobil_Type" class="java.lang.String"/>
+	<field name="mobil_Warna" class="java.lang.String"/>
+	<field name="mobil_Harga_Mobil" class="java.lang.Integer"/>
+	<field name="mobil_Gambar" class="java.lang.Object"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="136" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="b4c5f56e-7b73-4b67-95b1-cde85ae9e5b1" style="Title" x="92" y="0" width="378" height="62"/>
+				<textElement verticalAlignment="Middle">
+					<font pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[PT Torga Motors]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="de6fec86-b276-453f-ab70-33ee5c3ff5df" style="SubTitle" x="92" y="62" width="368" height="22"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[Jl Soekarno-Hatta No 617/619 Bandung]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="3199fdfa-5564-4693-9872-24b93137fe1c" x="92" y="96" width="378" height="28"/>
+				<textElement textAlignment="Center">
+					<font size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Laporan Data Mobil]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement uuid="0874efec-df54-4f93-977b-bdcbf67f165c" positionType="FixRelativeToBottom" x="0" y="15" width="555" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement uuid="f02ad57d-aa23-4c3c-b770-ff41cbc0d6fa" style="Column header" x="64" y="1" width="92" height="15" forecolor="#736343"/>
+				<textElement/>
+				<text><![CDATA[Kode Mobil]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="91f2753f-89d7-48a8-9779-7388471fb58b" style="Column header" x="156" y="1" width="92" height="15" forecolor="#736343"/>
+				<textElement/>
+				<text><![CDATA[Merk Mobil]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="7bbee849-115c-48cf-b355-d92d33a8ba7f" style="Column header" x="248" y="1" width="92" height="15" forecolor="#736343"/>
+				<textElement/>
+				<text><![CDATA[Type Mobil]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9a459d1a-a804-4e12-904b-55198e1432d2" style="Column header" x="340" y="1" width="92" height="15" forecolor="#736343"/>
+				<textElement/>
+				<text><![CDATA[Warna Mobil]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="0c3a28ee-4a0c-4897-9557-dee113e4563b" style="Column header" x="432" y="1" width="92" height="15" forecolor="#736343"/>
+				<textElement/>
+				<text><![CDATA[Harga Mobil]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="15" splitType="Stretch">
+			<frame>
+				<reportElement uuid="d71ee9c7-88d0-4d9a-9883-3ba5775c6188" style="Row" mode="Opaque" x="0" y="0" width="555" height="15"/>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="7e73c7ce-1eac-4512-8982-8a5d2c96e60e" style="Detail" x="64" y="0" width="92" height="15"/>
+					<textElement/>
+					<textFieldExpression><![CDATA[$F{mobil_Kode_Mobil}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="77304d82-3b45-4423-ad42-976931048b38" style="Detail" x="156" y="0" width="92" height="15"/>
+					<textElement/>
+					<textFieldExpression><![CDATA[$F{mobil_Merk}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="7de72370-c8ee-48a9-95b1-3d7d1e0f40ae" style="Detail" x="248" y="0" width="92" height="15"/>
+					<textElement/>
+					<textFieldExpression><![CDATA[$F{mobil_Type}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="c727bff7-a78d-49a3-b49e-ae7e688f4d9f" style="Detail" x="340" y="0" width="92" height="15"/>
+					<textElement/>
+					<textFieldExpression><![CDATA[$F{mobil_Warna}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="eb560041-1429-479a-989b-ac6373c8288a" style="Detail" x="432" y="0" width="92" height="15"/>
+					<textElement/>
+					<textFieldExpression><![CDATA[$F{mobil_Harga_Mobil}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="31" splitType="Stretch">
+			<line>
+				<reportElement uuid="763ffca3-47cf-421a-980f-080f9a96ecb4" positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement uuid="b73113a3-0fcd-4b09-aadb-27a8917d3acd" mode="Opaque" x="-21" y="1" width="597" height="24" forecolor="#D0B48E" backcolor="#F2EBDF"/>
+				<textField evaluationTime="Report">
+					<reportElement uuid="982f81f9-ad2f-466d-a9fc-8db322976bc2" style="Column header" x="533" y="0" width="40" height="20" forecolor="#736343"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="24b0861c-4150-4280-b0a2-b4ff7d7282e9" style="Column header" x="453" y="0" width="80" height="20" forecolor="#736343"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement uuid="83d88ee4-5339-4895-ad91-1031de951cc3" style="Column header" x="22" y="1" width="197" height="20" forecolor="#736343"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
